@@ -1,0 +1,232 @@
+<form
+  ngNativeValidate
+  #employeeForm="ngForm"
+  (ngSubmit)="saveEmployee(employee)"
+>
+  <!-- Consider the following line of code
+    <form #employeeForm="ngForm" (ngSubmit)="saveEmployee(employeeForm)"> -->
+
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Create Employee</h3>
+      <h4>Make the image work after 7PM , Dec 5</h4>
+    </div>
+    <div class="panel-body">
+      <!-- to dispaly error message if form is invlid -->
+      <div class="form-group" [class.has-error]="name.invalid && name.touched">
+        <!-- to get the focus lets associate it with the its associated Full name input 
+      and when we click on label it will focus the input element -->
+        <label for="name" class="control-label">Full Name</label>
+        <input
+          id="name"
+          [(ngModel)]="employee.name"
+          name="name"
+          type="text"
+          class="form-control"
+          #name="ngModel"
+          required
+        />
+        <!-- Conditionally display this only if there are errors -->
+        <span class="help-block" *ngIf="name.invalid && name.touched">
+          Full Name is required
+        </span>
+      </div>
+      <div
+        class="form-group"
+        [class.has-error]="email.invalid && email.touched"
+      >
+        <label for="email">Email</label>
+        <input
+          [required]="contactPreferences.value==='email'"
+          id="email"
+          [(ngModel)]="employee.email"
+          name="email"
+          type="email"
+          class="form-control"
+          #email="ngModel"
+        />
+        <span class="help-block" *ngIf="email.errors?.required">
+          Email Required
+        </span>
+      </div>
+      <div
+        class="form-group"
+        [class.has-error]="employeePhone.touched && employeePhone.errors?.required"
+      >
+        <label for="email">Phone Number</label>
+        <input
+          [required]="contactPreferences.value ==='phone'"
+          id="phone"
+          [(ngModel)]="employee.phone"
+          name="phone"
+          type="text"
+          class="form-control"
+          #employeePhone="ngModel"
+        />
+        <span
+          class="help-block"
+          *ngIf="employeePhone.errors?.required && employeePhone.touched"
+          >Phone number is Required</span
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Contact Preference</label>
+        <div class="form-control">
+          <label class="inline-radio">
+            <input
+              type="radio"
+              name="contactPreference"
+              value="email"
+              [(ngModel)]="employee.contactPreference"
+              #contactPreferences="ngModel"
+            />
+            Email
+          </label>
+          <label class="radio-inline">
+            <input
+              type="radio"
+              name="contactPreference"
+              value="phone"
+              [(ngModel)]="employee.contactPreference"
+            />
+            Phone
+          </label>
+          Contact preference selected is : {{contactPreferences.value}}
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Gender</label>
+        <div class="form-control">
+          <label>
+            <input
+              type="radio"
+              value="male"
+              name="gender"
+              [(ngModel)]="employee.gender"
+            />
+            Male
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="female"
+              name="gender"
+              [(ngModel)]="employee.gender"
+            />
+            Female
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Gender</label>
+        <div
+          class="form-control"
+          [class.has-error]="isActive.invalid && isActive.touched"
+        >
+          <label class="checkbox-inline control-label">
+            <input
+              type="checkbox"
+              name="isActive"
+              [(ngModel)]="employee.isActive"
+              #isActive="ngModel"
+            />
+            <!--Note:  disabled form attribute are not included in form model -->
+            <!-- checked attribute doesn't work with ngModel so use component to the form to be checked -->
+            <!-- <input type="checkbox" name="isAcive" [(ngModel)]="isAcive" checked /> -->
+            is Active
+          </label>
+        </div>
+        <span
+          class="help-block"
+          *ngIf="isActive.errors?.required && isAcive.touched"
+          >select isActive</span
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="department">Department</label>
+        <select
+          id="department"
+          name="department"
+          [(ngModel)]="employee.department"
+          class="form-control"
+        >
+          <option *ngFor="let dept of departments" [value]="dept.id">
+            {{dept.name}}</option
+          >
+        </select>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-5">
+          <label for="dateOfBirth">Date of Birth</label>
+          <input
+            id="dateOfBirth"
+            [(ngModel)]="employee.dateOfBirth"
+            name="dateOfBirth"
+            type="text"
+            class="form-control"
+            bsDatepicker
+            [bsConfig]="datePickerConfig"
+            placement="right"
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="photoPath">Photo Path</label>
+        <input
+          id="photoPath"
+          name="photoPath"
+          [(ngModel)]="employee.photoPath"
+          type="text"
+          class="form-control"
+        />
+      </div>
+      <div class="form-group">
+        Note: If we don't of type attribute as part of the button then it will
+        submit the form to fix this provide type attribute to the button alway
+        as shown below
+        <button (click)="togglePreviewPhoto()" class="btn btn-primary">
+          {{showPreview? "hide" : 'Show'}} Preview
+        </button>
+      </div>
+      <div class="form-group">
+        <img
+          *ngIf="showPreview"
+          [src]="employee.photoPath"
+          height="100"
+          widht="100"
+        />
+      </div>
+
+      <!-- to get range of of date picker in a calendar -->
+      <!-- <div class="form-group">
+        <label for="dateOfBirth">Date of Birth</label>
+        <input
+          id="dateOfBirth"
+          [(ngModel)]="dateOfBirth"
+          name="dateOfBirth"
+          type="text"
+          class="form-control"
+          bsDaterangepicker
+        />
+      </div> -->
+    </div>
+    <div class="panel-footer">
+      <!-- To Disable button if form is invalid [disabled]="employeeForm.invalid"-->
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="employeeForm.invalid"
+      >
+        Save
+      </button>
+    </div>
+  </div>
+</form>
+Angular Generated : {{employeeForm.value | json}}
+
+<br />
+<br />
+Our Employee Generated: {{employee | json }}

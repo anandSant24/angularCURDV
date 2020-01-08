@@ -1,5 +1,9 @@
 # AngularCurdV
 
+#23
+Make the Select field as a required filed if it is not selected display Error message:
+Department is Required
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.4.
 
 ## Development server

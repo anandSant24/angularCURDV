@@ -1,5 +1,4 @@
 <form
-  ngNativeValidate
   #employeeForm="ngForm"
   (ngSubmit)="saveEmployee(employee)"
 >
@@ -24,7 +23,6 @@
           type="text"
           class="form-control"
           #name="ngModel"
-          required
         />
         <!-- Conditionally display this only if there are errors -->
         <span class="help-block" *ngIf="name.invalid && name.touched">
@@ -118,7 +116,9 @@
           </label>
         </div>
       </div>
-
+    <!--Note:  disabled form attribute are not included in form model -->
+    <!-- checked attribute doesn't work with ngModel so use component to the form to be checked -->
+    <!-- <input type="checkbox" name="isAcive" [(ngModel)]="isAcive" checked /> -->
       <div class="form-group">
         <label>Gender</label>
         <div
@@ -126,21 +126,18 @@
           [class.has-error]="isActive.invalid && isActive.touched"
         >
           <label class="checkbox-inline control-label">
-            <input
-              type="checkbox"
+            <input type="checkbox"
               name="isActive"
               [(ngModel)]="employee.isActive"
               #isActive="ngModel"
+              required
             />
-            <!--Note:  disabled form attribute are not included in form model -->
-            <!-- checked attribute doesn't work with ngModel so use component to the form to be checked -->
-            <!-- <input type="checkbox" name="isAcive" [(ngModel)]="isAcive" checked /> -->
             is Active
           </label>
         </div>
         <span
           class="help-block"
-          *ngIf="isActive.errors?.required && isAcive.touched"
+          *ngIf="isActive.errors?.required && isActive.touched"
           >select isActive</span
         >
       </div>

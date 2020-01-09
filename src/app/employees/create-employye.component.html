@@ -151,7 +151,8 @@
           class="form-control"
           required
           #department="ngModel"
-        >
+          >
+        <option value="-1">Select Department</option> 
           <option *ngFor="let dept of departments" [value]="dept.id">
             {{dept.name}}</option
           >

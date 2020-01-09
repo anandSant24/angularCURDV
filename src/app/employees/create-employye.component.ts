@@ -3,6 +3,8 @@ import { Component, OnInit } from "@angular/core";
 import { Department } from "../models/department.model";
 import { BsDatepickerConfig } from "ngx-bootstrap/datepicker";
 import { Employee } from "../models/employee.models";
+import { EmployeeService } from "./employee.service";
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: "create-employye.component.html",
@@ -10,6 +12,7 @@ import { Employee } from "../models/employee.models";
 })
 export class CreateEmployeeComponent implements OnInit {
   showPreview = false;
+  
   employee: Employee = {
     id: null,
     name: null,
@@ -18,7 +21,7 @@ export class CreateEmployeeComponent implements OnInit {
     phoneNumber: null,
     contactPreference: null,
     dateOfBirth: null,
-    department: null,
+    department: '-1',
     isActive: null,
     photoPath: null
   };
@@ -27,7 +30,8 @@ export class CreateEmployeeComponent implements OnInit {
   }
   dateOfBirth: Date = new Date("12/20/1990");
   datePickerConfig: Partial<BsDatepickerConfig>;
-  constructor() {
+  constructor(private empSvc:EmployeeService, private routerNav: Router) {
+
     this.datePickerConfig = Object.assign(
       {},
       {
@@ -43,7 +47,7 @@ export class CreateEmployeeComponent implements OnInit {
     { id: 1, name: "Help Desk" },
     { id: 2, name: "IT" },
     { id: 3, name: "HR" },
-    { id: 4, name: "Parol" }
+    { id: 4, name: "Payroll" }
   ];
   // isAcive = true;
   //department: "1";
@@ -51,6 +55,7 @@ export class CreateEmployeeComponent implements OnInit {
   ngOnInit() {}
 
   saveEmployee(newEmployee: Employee): void {
-    console.log(newEmployee);
+    this.empSvc.addNewEmployee(this.employee);
+    this.routerNav.navigate(['/list']);
   }
 }

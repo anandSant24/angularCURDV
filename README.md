@@ -1,8 +1,9 @@
 # AngularCurdV
-
-#23
-Make the Select field as a required filed if it is not selected display Error message:
+#31 Creating a new employee using the create employee Form and on click of save add it to list page.
+    
+#23Make the Select field as a required filed if it is not selected display Error message:
 Department is Required
+    a) Display Default as first option
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.4.
 

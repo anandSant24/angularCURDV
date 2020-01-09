@@ -6,6 +6,8 @@ import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
 import { AppComponent } from "./app.component";
 import { ListEmployeesComponent } from "./employees/listEmployees.component";
 import { CreateEmployeeComponent } from "./employees/create-employye.component";
+import { EmployeeService } from './employees/employee.service';
+
 let appRoutes: Routes = [
   { path: "list", component: ListEmployeesComponent },
   { path: "create", component: CreateEmployeeComponent },
@@ -16,10 +18,10 @@ let appRoutes: Routes = [
   imports: [
     BrowserModule,
     BsDatepickerModule.forRoot(),
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes,{ enableTracing: true }),
     FormsModule
   ],
-  providers: [],
+  providers: [EmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -21,7 +21,7 @@ export class EmployeeService{
           dateOfBirth: new Date("10/25/1988"),
           department: "1",
           isActive: true,
-          photoPath: "../../assets/images/mark.png"
+          photoPath: "../assets/images/mark.png"
         },
         {
           id: 2,
@@ -33,7 +33,7 @@ export class EmployeeService{
           dateOfBirth: new Date("11/20/1979"),
           department: "2",
           isActive: true,
-          photoPath: "assets/images/mary.jpeg"
+          photoPath: "../assets/images/mary.jpeg"
         },
         {
           id: 3,
@@ -45,7 +45,7 @@ export class EmployeeService{
           dateOfBirth: new Date("3/25/1976"),
           department: "3",
           isActive: false,
-          photoPath: "assets/images/john.png"
+          photoPath: "../assets/images/john.png"
         }
       ];
 }

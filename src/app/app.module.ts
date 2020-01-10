@@ -7,6 +7,7 @@ import { AppComponent } from "./app.component";
 import { ListEmployeesComponent } from "./employees/listEmployees.component";
 import { CreateEmployeeComponent } from "./employees/create-employye.component";
 import { EmployeeService } from './employees/employee.service';
+import { DisplayEmployeeComponent } from './employees/display-employee.component';
 
 let appRoutes: Routes = [
   { path: "list", component: ListEmployeesComponent },
@@ -14,7 +15,7 @@ let appRoutes: Routes = [
   { path: "", redirectTo: "/create", pathMatch: "full" }
 ];
 @NgModule({
-  declarations: [AppComponent, ListEmployeesComponent, CreateEmployeeComponent],
+  declarations: [AppComponent, ListEmployeesComponent, CreateEmployeeComponent, DisplayEmployeeComponent],
   imports: [
     BrowserModule,
     BsDatepickerModule.forRoot(),

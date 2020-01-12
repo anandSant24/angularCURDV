@@ -28,11 +28,10 @@ export class DisplayEmployeeComponent implements OnInit {
   
   ngOnChanges(changes: SimpleChanges){
     for(const propKey of Object.keys(changes)){
-      console.log(propKey)
-      // let change = changes[propKey];
-      // let from = JSON.stringify(change.previousValue);
-      // let to = JSON.stringify(change.currentValue);
-      // console.log("change from "+from +"to "+ to);
+      let change = changes[propKey];
+      let from = JSON.stringify(change.previousValue);
+      let to = JSON.stringify(change.currentValue);
+      console.log("propName is "+propKey+" change from "+from +"to "+ to);
     }
   }
 }

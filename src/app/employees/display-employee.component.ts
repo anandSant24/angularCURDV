@@ -7,8 +7,18 @@ import { Employee } from "../models/employee.models";
   styleUrls: ['./display-employee.component.css']
 })
 export class DisplayEmployeeComponent implements OnInit {
-  _employee:Employee
-  @Input() employeeId:Number;
+  _employee:Employee;
+  _employeeId: Number;
+  @Input() 
+  set employeeId(num:Number){
+    console.log('setted', this._employeeId);
+    this._employeeId = num;
+  };
+
+  get employeeId():Number{
+    console.log('updated', this._employeeId);
+    return this._employeeId;
+  };
   
   @Input()
   set employee(val: Employee){
@@ -26,12 +36,12 @@ export class DisplayEmployeeComponent implements OnInit {
   ngOnInit() {
   }
   
-  ngOnChanges(changes: SimpleChanges){
-    for(const propKey of Object.keys(changes)){
-      let change = changes[propKey];
-      let from = JSON.stringify(change.previousValue);
-      let to = JSON.stringify(change.currentValue);
-      console.log("propName is "+propKey+" change from "+from +"to "+ to);
-    }
-  }
+  // ngOnChanges(changes: SimpleChanges){
+  //   for(const propKey of Object.keys(changes)){
+  //     let change = changes[propKey];
+  //     let from = JSON.stringify(change.previousValue);
+  //     let to = JSON.stringify(change.currentValue);
+  //     console.log("propName is "+propKey+" change from "+from +"to "+ to);
+  //   }
+  // }
 }

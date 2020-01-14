@@ -15,8 +15,6 @@ export class ListEmployeesComponent implements OnInit {
   }
   employeeToDisplay:Employee;
   
-
-
   ngOnInit(){
     this.employees = this.empSvc.getEmployees();
     this.employeeToDisplay = this.employees[0];

@@ -1,4 +1,4 @@
-import { Input, Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import {  Input, Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Employee } from "../models/employee.models";
 
 @Component({
@@ -9,6 +9,11 @@ import { Employee } from "../models/employee.models";
 export class DisplayEmployeeComponent implements OnInit {
   _employee:Employee;
   _employeeId: Number;
+
+  
+  getNameAndGender():string{
+    return "Clicked : "+this._employee.name+ " "+this._employee.gender;
+  }
 
   @Input() 
   set employeeId(num:Number){

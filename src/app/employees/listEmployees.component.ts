@@ -10,11 +10,13 @@ import { EmployeeService } from './employee.service';
 export class ListEmployeesComponent implements OnInit {
   indexEmp:number = 1;
   employees: Employee[];
-   
+
   constructor(private empSvc: EmployeeService){
   }
   employeeToDisplay:Employee;
   
+
+
   ngOnInit(){
     this.employees = this.empSvc.getEmployees();
     this.employeeToDisplay = this.employees[0];

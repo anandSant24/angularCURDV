@@ -1,9 +1,14 @@
-<!-- <div *ngFor="let employee of employees"> -->
-  <!-- <app-display-employee [employee]="employee" ></app-display-employee> -->
-<!-- </div> -->
 
-<div>
-<app-display-employee [employee]="employeeToDisplay" [employeeId]="employeeToDisplay.id"></app-display-employee>
-
-<button class="btn btn-primary" (click)="nextEmployee()">View Next Employee</button>
+<h1 #h1Variable></h1>
+<div *ngFor="let employee of employees">
+  <div (click)="h1Variable.innerHTML = childComponent.employee.name +' '+ childComponent.employee.gender">
+    <app-display-employee [employee]="employee" #childComponent></app-display-employee>
+  </div>
 </div>
+
+<!-- <div>
+<app-display-employee [employee]="employeeToDisplay" [employeeId]="employeeToDisplay.id"
+>
+</app-display-employee>
+<button class="btn btn-primary" (click)="nextEmployee()">View Next Employee</button>
+</div> -->

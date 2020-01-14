@@ -9,6 +9,7 @@ import { Employee } from "../models/employee.models";
 export class DisplayEmployeeComponent implements OnInit {
   _employee:Employee;
   _employeeId: Number;
+
   @Input() 
   set employeeId(num:Number){
     console.log('setted', this._employeeId);

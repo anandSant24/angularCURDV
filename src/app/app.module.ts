@@ -19,7 +19,7 @@ let appRoutes: Routes = [
   imports: [
     BrowserModule,
     BsDatepickerModule.forRoot(),
-    RouterModule.forRoot(appRoutes,{ enableTracing: true }),
+    RouterModule.forRoot(appRoutes,{ enableTracing: false }),
     FormsModule
   ],
   providers: [EmployeeService],

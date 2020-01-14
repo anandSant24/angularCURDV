@@ -1,5 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-// import { NgForm } from "@angular/forms";
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { NgForm } from "@angular/forms";
 import { Department } from "../models/department.model";
 import { BsDatepickerConfig } from "ngx-bootstrap/datepicker";
 import { Employee } from "../models/employee.models";
@@ -11,8 +11,10 @@ import { Router } from '@angular/router';
   styleUrls: ["create-employye.component.css"]
 })
 export class CreateEmployeeComponent implements OnInit {
+  //to read the form reference variable in component we create a public variable using ViewChild decorator
+  @ViewChild('employeeForm') public createEmployeeForm: NgForm;
+
   showPreview = false;
-  
   employee: Employee = {
     id: null,
     name: null,

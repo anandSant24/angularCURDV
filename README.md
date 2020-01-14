@@ -1,4 +1,9 @@
 # AngularCurdV
+#39 CanDeactivateGuard
+    1. build the route guard as a service
+    2. Register the router guard as a dependency injection
+    3. Tie the guard to route
+
 #31 Creating a new employee using the create employee Form and on click of save add it to list page.
     
 #23Make the Select field as a required filed if it is not selected display Error message:

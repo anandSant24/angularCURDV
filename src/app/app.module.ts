@@ -9,6 +9,7 @@ import { CreateEmployeeComponent } from "./employees/create-employye.component";
 import { EmployeeService } from './employees/employee.service';
 import { DisplayEmployeeComponent } from './employees/display-employee.component';
 import { createEmployeeCanDeActivateService } from "./employees/create-employee-canDeActivate.service";
+import { EmployeeDetailsComponent } from './employees/employee-details.component';
 
 let appRoutes: Routes = [
   { path: "list", component: ListEmployeesComponent },
@@ -18,10 +19,11 @@ let appRoutes: Routes = [
     canDeactivate: [createEmployeeCanDeActivateService]
   },
   { path: "", redirectTo: "/create", pathMatch: "full" },
+  { path: "employee/:id", component: EmployeeDetailsComponent}
 ];
 
 @NgModule({
-  declarations: [AppComponent, ListEmployeesComponent, CreateEmployeeComponent, DisplayEmployeeComponent],
+  declarations: [AppComponent, ListEmployeesComponent, CreateEmployeeComponent, DisplayEmployeeComponent, EmployeeDetailsComponent],
   imports: [
     BrowserModule,
     BsDatepickerModule.forRoot(),

@@ -10,6 +10,10 @@ export class EmployeeService{
         this.listEmployees.push(employee);
     }
 
+    getEmployeesById(id:number):any[]{
+     return this.listEmployees[id-1];
+    }
+
     private listEmployees: any[] = [
         {
           id: 1,

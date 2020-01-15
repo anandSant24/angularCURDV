@@ -1,5 +1,6 @@
 import {  Input, Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Employee } from "../models/employee.models";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-display-employee',
@@ -9,8 +10,12 @@ import { Employee } from "../models/employee.models";
 export class DisplayEmployeeComponent implements OnInit {
   _employee:Employee;
   _employeeId: Number;
-
   
+  constructor(private _router:Router) { }
+  
+  goToDetailsPage(id:number):void{
+    this._router.navigate(['employee',id]);
+  }
   getNameAndGender():string{
     return "Clicked : "+this._employee.name+ " "+this._employee.gender;
   }
@@ -37,7 +42,7 @@ export class DisplayEmployeeComponent implements OnInit {
   }
   // employee: Employee;
 
-  constructor() { }
+
 
   ngOnInit() {
   }

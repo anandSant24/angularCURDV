@@ -1,4 +1,25 @@
 # AngularCurdV
+#42
+
+#41 Angular Read Route Parameters
+Task: Read url params and retrive details
+    when we navigate to a page(that page's dispaly component should handle this logic)
+    in the Naviageted page component 
+        import { ActivatedRoute } from '@angular/router';
+        constructor()//initialize ActivatedRoute
+        OnInit(){ 
+            //have the logic to read the params
+            and display the view Template
+        }
+
+#40 Angular Route Params
+    create a module employee-details(new page)
+    on click of the tile navigate to this new page
+    handle onclick and add router.navigate(['path',idDeatils])
+    update the app.modules to have that path
+        ex: { path: 'employee/:id" component: newComponentName}
+    NewComponent HTML code should take care of this code.
+
 #39 CanDeactivateGuard
     1. build the route guard as a service
     2. Register the router guard as a dependency injection

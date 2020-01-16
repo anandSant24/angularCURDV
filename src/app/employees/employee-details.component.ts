@@ -15,8 +15,13 @@ export class EmployeeDetailsComponent implements OnInit {
     private _route:Router) {}
   employee: Employee;
   ngOnInit() {
-    this.id = +this._activatedRoute.snapshot.paramMap.get('id');
-    this.employee = this._empSvc.getEmployeesById(this.id);
+    // here paramMap is an Observable, and we subscribed to it, 
+    // so every time route param changes we get notification and we execute the code
+    this._activatedRoute.paramMap.subscribe(param =>{
+      //Note + operator converts string to a number
+      this.id = +param.get("id");
+      this.employee = this._empSvc.getEmployeesById(this.id);
+    }) 
   }
   ViewNextEmployee(){
     if(this.id <3){

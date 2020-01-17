@@ -1,4 +1,6 @@
 # AngularCurdV
+#45 How to make the the form submit when you reset and resolve this issue
+
 #44 Required Vs Optional Route Parameter
     1. Required Paramter are part of route configuration where as optional route parameters are not
     2. Required route parameters are used in pattern in matching

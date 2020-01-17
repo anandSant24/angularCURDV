@@ -1,6 +1,7 @@
 import {  Input, Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Employee } from "../models/employee.models";
 import { Router } from "@angular/router";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-display-employee',
@@ -11,7 +12,7 @@ export class DisplayEmployeeComponent implements OnInit {
   _employee:Employee;
   _employeeId: Number;
   
-  constructor(private _router:Router) { }
+  constructor(private _router:Router, private _activatedRoute: ActivatedRoute) { }
   
   goToDetailsPage(id:number):void{
     this._router.navigate(['employee',id]);
@@ -45,6 +46,8 @@ export class DisplayEmployeeComponent implements OnInit {
 
 
   ngOnInit() {
+    
+    this.selectedEmployeeId = +this._activatedRoute.snapshot.paramMap.get('id');
   }
   
   // ngOnChanges(changes: SimpleChanges){

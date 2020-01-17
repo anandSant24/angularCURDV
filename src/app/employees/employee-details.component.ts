@@ -3,7 +3,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { EmployeeService } from './employee.service';
 import { Employee } from "../models/employee.models";
 
-
 @Component({
   selector: 'app-employee-details',
   templateUrl: './employee-details.component.html',

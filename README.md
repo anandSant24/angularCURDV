@@ -1,4 +1,14 @@
 # AngularCurdV
+#44 Required Vs Optional Route Parameter
+    1. Required Paramter are part of route configuration where as optional route parameters are not
+    2. Required route parameters are used in pattern in matching
+    3. Optional route parameter must be passed after the required route parameter
+    4. 
+        a) Prefer a Route parameter when the value is simple and Mandatory
+        b) Prefer Optional Route Parameter when the value is Optional and Complex
+
+
+#43 optional Route Parameter
 #42
 
 #41 Angular Read Route Parameters

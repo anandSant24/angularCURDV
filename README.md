@@ -10,7 +10,7 @@
              and now you see both Jordan and John.
              as the reference is changed we are executing a pure change.
         3. Pure Pipe is not executed
-            If input to pipe is an Object and
+            If input to pipe is an Object and (Try to type j in search input box and notice that John appears and now when you click on change Employee Name Angualr Pure Pipe is not executed as Only property values of object change but not the reference)
             Only property values of object change but not the reference
     
         Why are Pure pipes fast  

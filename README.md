@@ -6,7 +6,7 @@
         2. Angular executes a pure pipe when it detects a pure change to the input value
         PURE CHANGE: is
             either a change to primitive value(String, number, boolean)
-            a Changed object reference (Object, Array, Date)
+             a Changed object reference (Object, Array, Date)
         3. Pure Pipe is not executed
             If input to pipe is an Object and
             Only property values of object change but not the reference

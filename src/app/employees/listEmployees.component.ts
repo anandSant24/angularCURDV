@@ -15,6 +15,10 @@ export class ListEmployeesComponent implements OnInit {
   
   constructor(private empSvc: EmployeeService, private  _activatedRoute: ActivatedRoute){
   }
+
+  changeEmployeeName(){
+    this.employees[0].name="JMark";
+  }
   employeeToDisplay:Employee;
   
   ngOnInit(){ 

@@ -1,4 +1,26 @@
 # AngularCurdV
+#48: Piper 2 types:
+    1. Pure pipe
+        Why to use Pure Pipe:
+        1. They are Fast
+        2. Angular executes a pure pipe when it detects a pure change to the input value
+        PURE CHANGE: is
+            either a change to primitive value(String, number, boolean)
+            a Changed object reference (Object, Array, Date)
+        3. Pure Pipe is not executed
+            If input to pipe is an Object and
+            Only property values of object change but not the reference
+    
+        Why are Pure pipes fast  
+          ● An input for a pipe can either be a value type (String, Number, Boolean etc) or a reference type (like Array, Date, Object etc.) ● If the input to the pure pipe is a value type. Since value types store data directly in the memory slot comparing if a value type value has changed is very quick.
+          ● On the other hand, if the input to the pure pipe is a reference type, it is executed only if the reference of the input object has changed. Checking if an object reference has changed is much faster than checking if each of the object individual property values have changed. 
+
+    2. Impure
+
+    So pure pipes are fast, but using them for filtering data is not a good idea because, the filtering may not work as expected if the source data is updated without a change to the object reference. 
+
+
+#47 implementing Pipe filter the list employees
 #45 How to make the the form submit when you reset and resolve this issue
 
 #44 Required Vs Optional Route Parameter

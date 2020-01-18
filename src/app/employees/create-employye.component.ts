@@ -56,15 +56,15 @@ export class CreateEmployeeComponent implements OnInit {
 
   ngOnInit() {}
 
-  saveEmployee(newEmployee: NgForm): void {
+  saveEmployee(): void {
     //1. passing employreeForm template variale to the component as part 
     // of the function call and using it
     // Ex: newEmployee.reset();
-    
     // 2. using @ViewChild() property see above with name createEmployeeForm
-    this.createEmployeeForm.reset();
-    this.empSvc.addNewEmployee(this.employee);
 
+    var newEmployeeData = Object.assign({}, this.employee);//creating new Object
+    this.createEmployeeForm.reset();
+    this.empSvc.addNewEmployee(newEmployeeData);// passing newly created copy of object
     this.routerNav.navigate(['/list']);
   }
 }

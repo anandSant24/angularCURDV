@@ -1,6 +1,11 @@
 
 <h1 #h1Variable></h1>
-<div *ngFor="let employee of employees">
+<div class="form-group">
+<input type="text" [(ngModel)]="searchByName" class="form-control" placeholder="Search Term" />
+  <!-- ​<input​ ​type​=​"text"​ ​class​=​"form-control"​ ​placeholder​=​"Search By Name" ​ [(​ngModel​)]=​"searchByName"​/>  -->
+  <!-- <input type="text" placeholder="Enter names to search" [(ngModel)]="searchByName" /> -->
+</div>
+<div *ngFor="let employee of employees | searchByTerm:searchByName ">
   <div (click)="h1Variable.innerHTML = childComponent.getNameAndGender()">
     <app-display-employee [employee]="employee" #childComponent></app-display-employee>
   </div>

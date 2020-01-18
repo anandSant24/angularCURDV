@@ -11,13 +11,13 @@ export class ListEmployeesComponent implements OnInit {
   indexEmp:number = 1;
   employees: Employee[];
   selectedEmployeeId: number;
-
+  searchByName: String="";
+  
   constructor(private empSvc: EmployeeService, private  _activatedRoute: ActivatedRoute){
   }
   employeeToDisplay:Employee;
   
-  ngOnInit(){
-    
+  ngOnInit(){ 
     this.employees = this.empSvc.getEmployees();
     this.employeeToDisplay = this.employees[0];
   }

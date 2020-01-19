@@ -28,6 +28,6 @@ export class EmployeeDetailsComponent implements OnInit {
     }else{
       this.id = 1;
     }
-    this._route.navigate(['employee', this.id]);
+    this._route.navigate(['employee', this.id], {queryParamsHandling:'preserve'});
   }
 }

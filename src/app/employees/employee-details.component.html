@@ -79,7 +79,7 @@
     </div>
   </div>
   <div class="panel-footer">
-    <a class="btn btn-primary" [routerLink]="['/list',{id: employee.id}]" queryParamsHandling="preserve">Back to List</a>
+    <a class="btn btn-primary" [routerLink]="['/list',{id: employee.id}]" queryParamsHandling="merge" [queryParams]="{'newParams':'newValue'}">Back to List</a>
     <button class="btn btn-primary pull-right" (click)="ViewNextEmployee()">View Next Employee</button>
   </div>
 </div>

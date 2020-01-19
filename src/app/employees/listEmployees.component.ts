@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Employee } from "../models/employee.models";
 import { EmployeeService } from './employee.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 
 @Component({
   templateUrl: "listEmployees.component.html",
@@ -18,9 +18,12 @@ export class ListEmployeesComponent implements OnInit {
   onMouseMove(){
   }
 
-  constructor(private empSvc: EmployeeService, private  _activatedRoute: ActivatedRoute){
+  constructor(private _router:Router, private empSvc: EmployeeService, private  _activatedRoute: ActivatedRoute){
   }
 
+  goToDetailsPage(id:number):void{
+    this._router.navigate(['employee',id]);
+  }
   changeEmployeeName(){
     this.employees[0].name="Jordan";
     // const newEmployeeArray:Employee[] = Object.assign([], this.employees);

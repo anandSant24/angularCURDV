@@ -14,9 +14,6 @@ export class DisplayEmployeeComponent implements OnInit {
   selectedEmployeeId:number;
   constructor(private _router:Router, private _activatedRoute: ActivatedRoute) { }
   
-  goToDetailsPage(id:number):void{
-    this._router.navigate(['employee',id]);
-  }
   getNameAndGender():string{
     return "Clicked : "+this._employee.name+ " "+this._employee.gender;
   }

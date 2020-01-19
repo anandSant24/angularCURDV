@@ -9,9 +9,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ListEmployeesComponent implements OnInit {
   indexEmp:number = 1;
-  employees: Employee[];
   selectedEmployeeId: number;
-  searchByName: String="";
+  private _searchByName: string="";
+
+  employees: Employee[];
+  filteredEmployees: Employee[];
 
   onMouseMove(){
   }
@@ -26,10 +28,23 @@ export class ListEmployeesComponent implements OnInit {
     // this.employees = newEmployeeArray;
   }
   employeeToDisplay:Employee;
-  
-  ngOnInit(){ 
+  get searchByName(){
+    return this._searchByName;
+  }
+  set searchByName(value:string){
+    this._searchByName = value;
+    this.filteredEmployees = this.filterEmployee(value);
+  }
+
+  filterEmployee(inputEmployee:string){
+    return this.employees.filter(employee => 
+      employee.name.toLowerCase().indexOf(inputEmployee.toLowerCase()) !== -1
+    )
+  }
+  ngOnInit(){
     this.employees = this.empSvc.getEmployees();
-    this.employeeToDisplay = this.employees[0];
+    // this.employeeToDisplay = this.employees[0];
+    this.filteredEmployees = this.employees;
   }
 
   addNewEmployee(newEmployee:Employee):void {

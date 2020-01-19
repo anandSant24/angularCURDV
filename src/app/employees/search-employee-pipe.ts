@@ -14,7 +14,7 @@ export class SearchEmployeePipe implements PipeTransform{
         if(!employees && !searchByTerm){
             return employees;
         }
-
+        //moving this logic to the component class itself
         return employees.filter(employee=> 
             employee.name.toLowerCase().indexOf(searchByTerm.toLowerCase()) !== -1)
             // employee.name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -​1​); 

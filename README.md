@@ -1,4 +1,6 @@
 # AngularCurdV
+#50 not using Pipe to filter and Adding filtering logic in Component it-self.
+
 #49 Impure Pipe
     notice wehn we type j in search and click on changeEmployeeName buttton Pipe is not executed
     to make it execute the solution is to make the pipe impure by setting the pure to false;

@@ -22,12 +22,14 @@ export class ListEmployeesComponent implements OnInit {
   }
 
   goToDetailsPage(id:number):void{
-    this._router.navigate(['employee',id],{queryParams:
-      {
-        "searchTerm": this.searchByName,
-        'testParam': 'testValue'
-      }
-  });
+    this._router.navigate(['employee',id]
+    // ,{queryParams:
+    //   {
+    //     "searchTerm": this.searchByName,
+    //     'testParam': 'testValue'
+    //   }
+    // }
+  );
   }
   changeEmployeeName(){
     this.employees[0].name="Jordan";

@@ -1,4 +1,13 @@
 # AngularCurdV
+#49 Impure Pipe
+    notice wehn we type j in search and click on changeEmployeeName buttton Pipe is not executed
+    to make it execute the solution is to make the pipe impure by setting the pure to false;
+    by setting pure: false in serach-employee-pipe filter we achieved it
+    But Impure pipe is processed on every chagne even when the source data doesn't change.
+    Notice the logs for every mouse move they are logged in our pipe filter 100's of times our impure filter is getting called
+    Even when the source data is not changed it is getting called
+    
+    Therefore Better approach is to move the code to the component logics itself
 #48: Piper 2 types:
     1. Pure pipe
         Why to use Pure Pipe:

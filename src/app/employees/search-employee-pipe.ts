@@ -3,13 +3,14 @@ import { Employee } from '../models/employee.models';
 
 @Pipe({
     name: 'searchByTerm',
-    pure:true
+    pure: false
 })
 
 
 export class SearchEmployeePipe implements PipeTransform{
+    counterMouseMoved:number=0;
     transform(employees: Employee[], searchByTerm: string ): Employee[]{
-        
+        console.log("Pipe impure mouse moves",++this.counterMouseMoved);
         if(!employees && !searchByTerm){
             return employees;
         }

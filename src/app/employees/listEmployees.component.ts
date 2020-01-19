@@ -12,7 +12,10 @@ export class ListEmployeesComponent implements OnInit {
   employees: Employee[];
   selectedEmployeeId: number;
   searchByName: String="";
-  
+
+  onMouseMove(){
+  }
+
   constructor(private empSvc: EmployeeService, private  _activatedRoute: ActivatedRoute){
   }
 

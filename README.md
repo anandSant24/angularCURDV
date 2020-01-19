@@ -1,4 +1,7 @@
 # AngularCurdV
+#51 Passing Query Params to via Component and html file
+    Preserving Query Params
+    
 #50 not using Pipe to filter and Adding filtering logic in Component it-self.
 
 #49 Impure Pipe

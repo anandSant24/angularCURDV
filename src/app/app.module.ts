@@ -12,30 +12,41 @@ import { createEmployeeCanDeActivateService } from "./employees/create-employee-
 import { EmployeeDetailsComponent } from './employees/employee-details.component';
 import { SearchEmployeePipe } from './employees/search-employee-pipe';
 import { EmployeeListResolverSvc } from './employees/employee-list-resolver.service';
+import { PageNotFoundComponent } from './page-not-found.component';
+import { EmployeeDetailSGuardSvc } from './employees/employee-details-guard.service';
 
 let appRoutes: Routes = [
   { path: "list", 
     component: ListEmployeesComponent,
     resolve: {employeeList: EmployeeListResolverSvc}
   },
+  
   { 
     path: "create", 
     component: CreateEmployeeComponent ,
     canDeactivate: [createEmployeeCanDeActivateService]
   },
+  
   { path: "", redirectTo: "/create", pathMatch: "full" },
-  { path: "employee/:id", component: EmployeeDetailsComponent}
+  
+  { path: "employee/:id",
+    component: EmployeeDetailsComponent,
+    canActivate: [EmployeeDetailSGuardSvc]
+  },
+  {
+    path: "pageNotFound", component: PageNotFoundComponent
+  }
 ];
 
 @NgModule({
-  declarations: [AppComponent, ListEmployeesComponent, CreateEmployeeComponent, DisplayEmployeeComponent, EmployeeDetailsComponent, SearchEmployeePipe],
+  declarations: [AppComponent, ListEmployeesComponent, CreateEmployeeComponent, DisplayEmployeeComponent, EmployeeDetailsComponent, SearchEmployeePipe, PageNotFoundComponent],
   imports: [
     BrowserModule,
     BsDatepickerModule.forRoot(),
     RouterModule.forRoot(appRoutes,{ enableTracing: false }),
     FormsModule
   ],
-  providers: [EmployeeService, createEmployeeCanDeActivateService, EmployeeListResolverSvc],
+  providers: [EmployeeService, createEmployeeCanDeActivateService, EmployeeListResolverSvc,EmployeeDetailSGuardSvc],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

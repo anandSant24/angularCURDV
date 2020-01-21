@@ -19,6 +19,7 @@ export class ListEmployeesComponent implements OnInit {
   }
 
   constructor(private _router:Router, private empSvc: EmployeeService, private  _activatedRoute: ActivatedRoute){
+    this.employees = this._activatedRoute.snapshot.data['employeeList'];
   }
 
   goToDetailsPage(id:number):void{
@@ -52,9 +53,17 @@ export class ListEmployeesComponent implements OnInit {
     )
   }
   ngOnInit(){
-    this.employees = this.empSvc.getEmployees();
+      // this.empSvc.getEmployees().subscribe(empData => {
+      //     this.employees = empData;
+          // console.log(empData);
+          if(this._activatedRoute.snapshot.queryParamMap.has('searchTerm')){
+            this.searchByName = this._activatedRoute.snapshot.queryParamMap.get('searchTerm')
+          }else{
+            this.filteredEmployees = this.employees;
+          }
+      //   }
+      // );
     // this.employeeToDisplay = this.employees[0];
-    this.filteredEmployees = this.employees;
   }
 
   addNewEmployee(newEmployee:Employee):void {

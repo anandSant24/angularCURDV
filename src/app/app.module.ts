@@ -11,9 +11,13 @@ import { DisplayEmployeeComponent } from './employees/display-employee.component
 import { createEmployeeCanDeActivateService } from "./employees/create-employee-canDeActivate.service";
 import { EmployeeDetailsComponent } from './employees/employee-details.component';
 import { SearchEmployeePipe } from './employees/search-employee-pipe';
+import { EmployeeListResolverSvc } from './employees/employee-list-resolver.service';
 
 let appRoutes: Routes = [
-  { path: "list", component: ListEmployeesComponent },
+  { path: "list", 
+    component: ListEmployeesComponent,
+    resolve: {employeeList: EmployeeListResolverSvc}
+  },
   { 
     path: "create", 
     component: CreateEmployeeComponent ,
@@ -31,7 +35,7 @@ let appRoutes: Routes = [
     RouterModule.forRoot(appRoutes,{ enableTracing: false }),
     FormsModule
   ],
-  providers: [EmployeeService, createEmployeeCanDeActivateService],
+  providers: [EmployeeService, createEmployeeCanDeActivateService, EmployeeListResolverSvc],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

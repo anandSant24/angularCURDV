@@ -1,10 +1,20 @@
 import { Injectable } from '@angular/core';
+import { Employee } from '../models/employee.models';
+//Note: observable of
+import 'rxjs/add/observable/of';
+//Note: it is operator has delay
+import 'rxjs/add/operator/delay';
 
+import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class EmployeeService{
-    getEmployees(){
-        return this.listEmployees;
-    }
+    // getEmployees(){
+    //     return this.listEmployees;
+    // }
+    /* Converting an array returned to an Observable */
+    getEmployees(): Observable<Employee[]>{
+      return Observable.of(this.listEmployees).delay(2000);
+  }
     
     addNewEmployee(employee: any){
         this.listEmployees.push(employee);

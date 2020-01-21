@@ -1,3 +1,64 @@
 ul {
   text-align: center;
 }
+
+.OuterContainer{
+  margin-top:10px;
+  border: 1px solid red;
+  width:50px;
+  height:50px;
+}
+
+.innerContrainer{
+  border: 1px solid blue;
+  width:25px;
+  height:25px;
+  position:fixed;
+}
+
+.absoluteContainer{
+  border:1px solid #000;
+  width:50px;
+  height:50px;
+  margin-left:50px;
+}
+
+.absoluteInnerContrainer{
+  border: 1px solid silver;
+  width:25px;
+  height:25px;
+  position:absolute;
+  top: 50px;
+}
+
+.absoluteContainer1{
+  border:1px solid #3a03a0;
+  width:50px;
+  height:50px;
+  margin-left:50px;
+  position: relative;;
+}
+
+.absoluteInnerContrainer1{
+  border: 1px solid rgb(192, 192, 192);
+  width:25px;
+  height:25px;
+  position:absolute;
+  top: 10px;
+}
+
+.spinner{
+  width: 100px;
+  height: 100px;
+  border: 16px solid silver;
+  border-top: 16px solid red;
+  border-radius:50%;
+  top:50%;
+  left:50%;
+  animation: spin 700ms linear infinite;
+  position:absolute;
+}
+@keyframes spin{
+  0%{transform: rotate(0deg)}
+  100%{transform: rotate(360deg)}
+}

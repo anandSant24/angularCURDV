@@ -1,7 +1,40 @@
 # AngularCurdV
+#56 Route Loading Indication and capturing Route Navigation Event
+    construnctor(private _router:Router){
+        this.router.events.subscribe((routerEvent:Event){
+            ...
+        })
+    }
+
+#55 Angular Route Navigation Event
+    NavigationStart
+    NavigationEnd
+    RoutesRecognized
+    GuardsCheckStart
+    GuardCheckEnd
+    ...
+
+#54: Resolve Guard
+    1. Implement Router resolver service
+    2. Register the Route Resolver
+    3. Add the routeResolverService to route for which we want to prefectch data
+    4. Read prefetched data from activatedRoute in list(consumer component) constructor
+#53 Creating observable using of observable and 
+    
+    note(operator):  rxjs/add/operator/delay;
+    note(obserbable):rxjs/add/observable/of; 
+
+#52 Reading Required, Optional , Query Parameters
+    1. Query Params:
+        this.activatedRoute.snapshot.queryParamMap.has('searchTerm')
+    2. Required, Optional
+        this.activatedRoute.snapshot.paramMap.keys()
+
 #51 Passing Query Params to via Component and html file
     Preserving Query Params
-    
+    Note: queryParams handling directive is introduced in Angular4 
+    It is not available in Angular2(use preserveQueryParams[this is depricated in Angular4 version])
+
 #50 not using Pipe to filter and Adding filtering logic in Component it-self.
 
 #49 Impure Pipe

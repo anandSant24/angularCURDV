@@ -17,10 +17,9 @@ export class AppComponent {
           this.showSpinner = true;
           return true;
         }
-        if(eventCapture instanceof NavigationEnd){
+        if(eventCapture instanceof NavigationEnd || eventCapture instanceof NavigationCancel || eventCapture instanceof NavigationError){
           this.showSpinner = false;
           return false;
-          //this._router.navigate(['\pageNotFound']);
         }
       }
     )

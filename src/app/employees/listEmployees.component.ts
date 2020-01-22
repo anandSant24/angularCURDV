@@ -22,16 +22,6 @@ export class ListEmployeesComponent implements OnInit {
     this.employees = this._activatedRoute.snapshot.data['employeeList'];
   }
 
-  goToDetailsPage(id:number):void{
-    this._router.navigate(['employee',id]
-    ,{queryParams:
-      {
-        "searchTerm": this.searchByName,
-        'testParam': 'testValue'
-      }
-    }
-  );
-  }
   changeEmployeeName(){
     this.employees[0].name="Jordan";
     // const newEmployeeArray:Employee[] = Object.assign([], this.employees);

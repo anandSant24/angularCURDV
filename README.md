@@ -1,4 +1,17 @@
 # AngularCurdV
+#58 Communication between Component
+    1. between parent to child
+        use @Input() property
+    2. between child to parent
+        use @Output() property (EventEmiiter)
+        templateReference Variable
+    3. No parent - child relationship component
+        Use 
+        QueryParameter
+        Require Parameter
+        Optional Parameter
+        Services
+
 #57 CanActivate Guard service in angular
     1.Implement canActivateGuard as a service
     2. Register Guard with angular dependency injection system provider

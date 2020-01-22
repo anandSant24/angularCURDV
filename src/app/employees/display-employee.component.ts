@@ -13,7 +13,14 @@ export class DisplayEmployeeComponent implements OnInit {
   _employeeId: Number;
   selectedEmployeeId:number;
   constructor(private _router:Router, private _activatedRoute: ActivatedRoute) { }
-  
+  @Input()
+  searchTerm: string;
+
+  goToDetailsPage(){
+    this._router.navigate(['/employee', this._employee.id],{
+      queryParams:{'searchTerm':this.searchTerm}
+    })
+  }
   getNameAndGender():string{
     return "Clicked : "+this._employee.name+ " "+this._employee.gender;
   }

@@ -7,7 +7,7 @@
 
   <div class="panel panel-primary">
     <div class="panel-heading">
-      <h3 class="panel-title">Create Employee</h3>
+      <h3 class="panel-title">{{ panelTitle }} Employee</h3>
       <h4>Make the image work after 7PM , Dec 5</h4>
     </div>
     <div class="panel-body">
@@ -191,13 +191,13 @@
         Note: If we don't of type attribute as part of the button then it will
         submit the form to fix this provide type attribute to the button alway
         as shown below
-        <button (click)="togglePreviewPhoto()" class="btn btn-primary">
+        <button *ngIf = "employee.photoPath != null && employee.photoPath !=''" (click)="togglePreviewPhoto()" class="btn btn-primary">
           {{showPreview? "hide" : 'Show'}} Preview
         </button>
       </div>
       <div class="form-group">
         <img
-          *ngIf="showPreview"
+        *ngIf = "showPreview && employee.photoPath != null && employee.photoPath !=''"
           [src]="employee.photoPath"
           height="100"
           widht="100"

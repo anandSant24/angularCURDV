@@ -14,8 +14,23 @@ export class EmployeeService{
     /* Converting an array returned to an Observable */
     getEmployees(): Observable<Employee[]>{
       return Observable.of(this.listEmployees).delay(2000);
-  }
+    }
     
+    save(employee: Employee){
+      if(employee.id === null){
+        // to add a unique value
+        const maxId = this.listEmployees.reduce( function(e1, e2){
+          return (e1.id > e2.id) ? e1: e2;
+        }).id;
+        employee.id = maxId + 1;
+        this.listEmployees.push(employee);
+      }else{
+        // if id in listEmployees is matched to input employee id it means we found the id in listEmployees 
+        const foundIndex = this.listEmployees.findIndex(e => e.id === employee.id)
+        this.listEmployees[foundIndex] = employee;
+        
+      }
+    }
     addNewEmployee(employee: any){
         this.listEmployees.push(employee);
     }

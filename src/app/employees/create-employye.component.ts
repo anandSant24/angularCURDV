@@ -14,7 +14,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 export class CreateEmployeeComponent implements OnInit {
   //to read the form reference variable in component we create a public variable using ViewChild decorator
   @ViewChild('employeeForm') public createEmployeeForm: NgForm;
-
+  panelTitle:string="Create";
   showPreview = false;
   employee: Employee = {
     id: null,
@@ -34,10 +34,10 @@ export class CreateEmployeeComponent implements OnInit {
   }
   dateOfBirth: Date = new Date("12/20/1990");
   datePickerConfig: Partial<BsDatepickerConfig>;
-  constructor(private empSvc:EmployeeService, 
-      private _routerNav: Router,
-      private _activatedRoute: ActivatedRoute
-      ) {
+  constructor(private _empSvc: EmployeeService,
+    private _routerNav: Router,
+    private _activatedRoute: ActivatedRoute
+  ) {
 
     this.datePickerConfig = Object.assign(
       {},
@@ -65,9 +65,10 @@ export class CreateEmployeeComponent implements OnInit {
       this.getEmployeeData(id);
     })
   }
-  
-  getEmployeeData(employeeId: number){
-    if(employeeId == 0){
+
+  getEmployeeData(employeeId: number) {
+    if (employeeId == 0) {
+      this.panelTitle = "Create";
       this.employee = {
         id: null,
         name: null,
@@ -81,13 +82,14 @@ export class CreateEmployeeComponent implements OnInit {
         photoPath: null
       };
       this.createEmployeeForm.reset();
-    }else{
+    } else {
+      this.panelTitle = 'Edit';
       //Issue: without below two line and if we simply use 
-      // this.empSvc.getEmployeesById(employeeId) instead. is that notice
+      // this._empSvc.getEmployeesById(employeeId) instead. is that notice
       // In the form if you update the name to say Mark1 and go to list wihtout saving notice the employee name got changed
       // since we are using the same employee object therefore to fix this we are creating a copy of employee object and assigning it to employee
-      
-      this.employee = Object.assign({}, this.empSvc.getEmployeesById(employeeId));
+
+      this.employee = Object.assign({}, this._empSvc.getEmployeesById(employeeId));
     }
   }
 
@@ -98,8 +100,9 @@ export class CreateEmployeeComponent implements OnInit {
     // 2. using @ViewChild() property see above with name createEmployeeForm
 
     var newEmployeeData = Object.assign({}, this.employee);//creating new Object
+    this._empSvc.save(newEmployeeData);
     this.createEmployeeForm.reset();
-    this.empSvc.addNewEmployee(newEmployeeData);// passing newly created copy of object
+    // this._empSvc.addNewEmployee(newEmployeeData);// passing newly created copy of object
     this._routerNav.navigate(['/list']);
   }
 }

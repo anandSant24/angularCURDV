@@ -1,4 +1,8 @@
 # AngularCurdV
+
+#59 Edit form ( update create to have edit functionality as well)
+    1.making create support edit functionality
+    2. Subscript to route parameter change and reset accordingly
 #58 Communication between Component
     1. between parent to child
         use @Input() property

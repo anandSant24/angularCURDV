@@ -35,7 +35,7 @@
       >
         <label for="email">Email</label>
         <input
-          [required]="contactPreferences.value==='email'"
+          [required]="contactPreferences.value === 'Email'"
           id="email"
           [(ngModel)]="employee.email"
           name="email"
@@ -53,12 +53,13 @@
       >
         <label for="email">Phone Number</label>
         <input
-          [required]="contactPreferences.value ==='phone'"
+          [required]="contactPreferences.value === 'phoneNumber'"
           id="phone"
-          [(ngModel)]="employee.phone"
+          [(ngModel)]="employee.phoneNumber"
           name="phone"
           type="text"
           class="form-control"
+          value="phoneNumber"
           #employeePhone="ngModel"
         />
         <span
@@ -75,7 +76,7 @@
             <input
               type="radio"
               name="contactPreference"
-              value="email"
+              value="Email"
               [(ngModel)]="employee.contactPreference"
               #contactPreferences="ngModel"
             />
@@ -85,7 +86,7 @@
             <input
               type="radio"
               name="contactPreference"
-              value="phone"
+              value="phoneNumber"
               [(ngModel)]="employee.contactPreference"
             />
             Phone
@@ -99,7 +100,7 @@
           <label>
             <input
               type="radio"
-              value="male"
+              value="Male"
               name="gender"
               [(ngModel)]="employee.gender"
             />
@@ -108,7 +109,7 @@
           <label>
             <input
               type="radio"
-              value="female"
+              value="Female"
               name="gender"
               [(ngModel)]="employee.gender"
             />

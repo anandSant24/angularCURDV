@@ -21,6 +21,12 @@ export class DisplayEmployeeComponent implements OnInit {
       queryParams:{'searchTerm':this.searchTerm}
     })
   }
+
+  editEmployees(){
+    // edit is nothing but create.employee.component
+    this._router.navigate(['/edit', this._employee.id]);
+  }
+
   getNameAndGender():string{
     return "Clicked : "+this._employee.name+ " "+this._employee.gender;
   }

@@ -22,7 +22,8 @@ let appRoutes: Routes = [
   },
   
   { 
-    path: "create", 
+    //the id is to distinguish between create and edit; id=0 => Create else edit/update
+    path: "edit/:id", 
     component: CreateEmployeeComponent ,
     canDeactivate: [createEmployeeCanDeActivateService]
   },

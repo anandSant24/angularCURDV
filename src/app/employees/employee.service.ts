@@ -42,7 +42,6 @@ export class EmployeeService{
           name: "Mary",
           gender: "Female",
           email: "mary@yahoogmail.com",
-          phoneNumber: 1234789504,
           contactPreference: "Email",
           dateOfBirth: new Date("11/20/1979"),
           department: "2",

@@ -1,5 +1,32 @@
 # AngularCurdV
 
+#63 Online fake REST API
+    Representational State transfer:
+        Architectural pattern
+        Constraints
+            Client Server
+            Stateless
+            Cacheable
+            Uniform Interface
+    Uniform Interface constraints: Defines the interface between client and the server
+        1.Resource: represents the data entity like employees ,customers, products etc.
+        2.methods (GET, POST, PUT, DELETE) 
+
+    Resource        Methods         result
+    /Employee       Get            Get list of all employees
+    /Employee/1     Get            Get employee with id=1
+    /Employee       POST           Create a new employee
+    /Employee/1     PUT            update the employee with id=1
+    /Employee       DELETE         Delete an employee with id=1
+
+    JSON server github page
+
+    to install JSON Server
+    # npm install -g json-server
+
+    To Start server
+    # json-server --watch db.json
+
 #62 How does accordian component know which div to place insde which accordian-content ?
     accordian.html
     <ng-content select=".myPanelBody"></ng-content>

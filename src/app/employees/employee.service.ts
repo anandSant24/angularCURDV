@@ -31,6 +31,14 @@ export class EmployeeService{
         
       }
     }
+
+    deleteEmployee(id:number){
+      let empId = this.listEmployees.find( emp => emp.id === id);
+      if(empId !== -1){
+        this.listEmployees.splice(empId, 1);
+      }
+    }
+
     addNewEmployee(employee: any){
         this.listEmployees.push(employee);
     }

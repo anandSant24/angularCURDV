@@ -28,7 +28,7 @@ let appRoutes: Routes = [
     canDeactivate: [createEmployeeCanDeActivateService]
   },
   
-  { path: "", redirectTo: "/create", pathMatch: "full" },
+  { path: "", redirectTo: "/list", pathMatch: "full" },
   
   { path: "employee/:id",
     component: EmployeeDetailsComponent,

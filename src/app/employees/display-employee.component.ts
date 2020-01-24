@@ -2,6 +2,7 @@ import {  Input, Component, OnInit, OnChanges, SimpleChanges } from '@angular/co
 import { Employee } from "../models/employee.models";
 import { Router } from "@angular/router";
 import { ActivatedRoute } from '@angular/router';
+import { EmployeeService } from './employee.service';
 
 @Component({
   selector: 'app-display-employee',
@@ -12,7 +13,10 @@ export class DisplayEmployeeComponent implements OnInit {
   _employee:Employee;
   _employeeId: Number;
   selectedEmployeeId:number;
-  constructor(private _router:Router, private _activatedRoute: ActivatedRoute) { }
+  
+  constructor(private _router:Router, private _activatedRoute: ActivatedRoute, private _empSvc: EmployeeService) { 
+    
+  }
   @Input()
   searchTerm: string;
 
@@ -25,8 +29,11 @@ export class DisplayEmployeeComponent implements OnInit {
   editEmployees(){
     // edit is nothing but create.employee.component
     this._router.navigate(['/edit', this._employee.id]);
+  
   }
-
+  deleteEmployees(){
+    this._empSvc.deleteEmployee(+this.employeeId);
+  }
   getNameAndGender():string{
     return "Clicked : "+this._employee.name+ " "+this._employee.gender;
   }

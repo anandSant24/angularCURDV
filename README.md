@@ -1,4 +1,10 @@
 # AngularCurdV
+
+#62 How does accordian component know which div to place insde which accordian-content ?
+    accordian.html
+    <ng-content select=".myPanelBody"></ng-content>
+    parentContainer
+    <div class="col-xs-10 myPanelBody">....</div>
 #61 Accordian
     using *ngIf directive
     Note: *ngIf adds/removes the elements from the DOM

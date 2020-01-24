@@ -13,7 +13,8 @@ export class DisplayEmployeeComponent implements OnInit {
   _employee:Employee;
   _employeeId: Number;
   selectedEmployeeId:number;
-  
+
+
   constructor(private _router:Router, private _activatedRoute: ActivatedRoute, private _empSvc: EmployeeService) {   
   }
 

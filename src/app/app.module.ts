@@ -14,6 +14,7 @@ import { SearchEmployeePipe } from './employees/search-employee-pipe';
 import { EmployeeListResolverSvc } from './employees/employee-list-resolver.service';
 import { PageNotFoundComponent } from './page-not-found.component';
 import { EmployeeDetailSGuardSvc } from './employees/employee-details-guard.service';
+import { AccordianComponent } from './shared/accordian.component';
 
 let appRoutes: Routes = [
   { path: "list", 
@@ -40,7 +41,7 @@ let appRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ListEmployeesComponent, CreateEmployeeComponent, DisplayEmployeeComponent, EmployeeDetailsComponent, SearchEmployeePipe, PageNotFoundComponent],
+  declarations: [AppComponent, ListEmployeesComponent, CreateEmployeeComponent, DisplayEmployeeComponent, EmployeeDetailsComponent, SearchEmployeePipe, PageNotFoundComponent, AccordianComponent],
   imports: [
     BrowserModule,
     BsDatepickerModule.forRoot(),

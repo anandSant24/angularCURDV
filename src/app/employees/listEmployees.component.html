@@ -13,7 +13,7 @@
 <div *ngFor="let employee of filteredEmployees" (mousemove)="onMouseMove()">
   <!-- <a [routerLink] = "['/create']"  [queryParams]="{ 'searchByName':'John', 'testParam':'testValue'}">go To Employees page</a> -->
   <div>
-    <app-display-employee [employee]="employee" #childComponent [searchTerm]="searchByName"></app-display-employee>
+    <app-display-employee (notifyDelete)= "deleteEmployee($event)" [employee]="employee" #childComponent [searchTerm]="searchByName"></app-display-employee>
   </div>
 </div>
 

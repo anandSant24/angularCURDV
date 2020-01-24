@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Employee } from "../models/employee.models";
 import { EmployeeService } from './employee.service';
 import { ActivatedRoute,Router } from '@angular/router';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   templateUrl: "listEmployees.component.html",
@@ -28,10 +29,12 @@ export class ListEmployeesComponent implements OnInit {
     // newEmployeeArray[0].name = "Jordan";
     // this.employees = newEmployeeArray;
   }
+
   employeeToDisplay:Employee;
   get searchByName(){
     return this._searchByName;
   }
+
   set searchByName(value:string){
     this._searchByName = value;
     this.filteredEmployees = this.filterEmployee(value);
@@ -42,6 +45,7 @@ export class ListEmployeesComponent implements OnInit {
       employee.name.toLowerCase().indexOf(inputEmployee.toLowerCase()) !== -1
     )
   }
+
   ngOnInit(){
       // this.empSvc.getEmployees().subscribe(empData => {
       //     this.employees = empData;
@@ -66,6 +70,12 @@ export class ListEmployeesComponent implements OnInit {
       this.indexEmp++;
     }else{
       this.employeeToDisplay = this.employees[0];
+    }
+  }
+  deleteEmployee(id:number){
+    let empId = this.filteredEmployees.findIndex(emp => emp.id === id);
+    if(empId !== -1){
+      this.filteredEmployees.splice(empId, 1);
     }
   }
 }

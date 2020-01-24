@@ -1,4 +1,4 @@
-import {  Input, Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import {  Input, Output, Component, OnInit, OnChanges, SimpleChanges, EventEmitter } from '@angular/core';
 import { Employee } from "../models/employee.models";
 import { Router } from "@angular/router";
 import { ActivatedRoute } from '@angular/router';
@@ -14,11 +14,14 @@ export class DisplayEmployeeComponent implements OnInit {
   _employeeId: Number;
   selectedEmployeeId:number;
   
-  constructor(private _router:Router, private _activatedRoute: ActivatedRoute, private _empSvc: EmployeeService) { 
-    
+  constructor(private _router:Router, private _activatedRoute: ActivatedRoute, private _empSvc: EmployeeService) {   
   }
+
   @Input()
   searchTerm: string;
+  confirmDelete: boolean = true;
+
+  @Output() notifyDelete: EventEmitter<number> = new EventEmitter<number>();
 
   goToDetailsPage(){
     this._router.navigate(['/employee', this._employee.id],{
@@ -31,8 +34,10 @@ export class DisplayEmployeeComponent implements OnInit {
     this._router.navigate(['/edit', this._employee.id]);
   
   }
+
   deleteEmployees(){
-    this._empSvc.deleteEmployee(+this.employeeId);
+    this._empSvc.deleteEmployee(+this.employee.id);
+    this.notifyDelete.emit(+this.employee.id);
   }
   getNameAndGender():string{
     return "Clicked : "+this._employee.name+ " "+this._employee.gender;

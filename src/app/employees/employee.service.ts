@@ -33,7 +33,7 @@ export class EmployeeService{
     }
 
     deleteEmployee(id:number){
-      let empId = this.listEmployees.find( emp => emp.id === id);
+      let empId = this.listEmployees.findIndex( emp => emp.id === id);
       if(empId !== -1){
         this.listEmployees.splice(empId, 1);
       }

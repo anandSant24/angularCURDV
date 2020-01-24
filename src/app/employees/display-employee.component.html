@@ -84,7 +84,14 @@
     <button class="btn btn-primary" (click)="goToDetailsPage()"> View </button>  
     
     <button class="btn btn-primary" (click)="editEmployees()"> Edit </button>
-
-    <button class="btn btn-danger" (click)="deleteEmployees()"> Delete </button>
+    
+      
+      <span *ngIf="!confirmDelete">
+        <span>Are you sure you want to delete it</span>
+        <button class="btn btn-primary" (click)="confirmDelete=true;"> No </button>
+        <button class="btn btn-danger" (click)="deleteEmployees()"> Yes </button>
+      </span>
+    
+    <button class="btn btn-danger" (click)="confirmDelete = false;" *ngIf="confirmDelete"> Delete </button>
   </div>
 </div>

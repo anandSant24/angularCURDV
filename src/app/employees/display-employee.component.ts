@@ -20,7 +20,7 @@ export class DisplayEmployeeComponent implements OnInit {
   @Input()
   searchTerm: string;
   confirmDelete: boolean = true;
-
+  isHidden: boolean = true;
   @Output() notifyDelete: EventEmitter<number> = new EventEmitter<number>();
 
   goToDetailsPage(){

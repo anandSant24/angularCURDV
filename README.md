@@ -1,4 +1,10 @@
 # AngularCurdV
+#61 Accordian
+    using *ngIf directive
+    Note: *ngIf adds/removes the elements from the DOM
+    When we need not show an element, ngIf is better
+    i.e When we logged in as non-admin user, there is a report that only need to be seen by admin user then *ngIf is better. If you simply hide the element then also it will get the record as the element is in the DOM
+#60: Delete an Employee
 
 #59 Edit form ( update create to have edit functionality as well)
     1.making create support edit functionality

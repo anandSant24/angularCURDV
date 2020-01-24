@@ -3,7 +3,7 @@
     <h3 class="panel-title">{{employee.name | uppercase}}</h3>
   </div>
   
-  <div class="panel-body" *ngIf="isHidden">
+  <div class="panel-body" [hidden]="!isHidden">
     <div class="col-xs-10">
       <div class="row vertical-align">
         <div class="col-xs-4">
@@ -80,7 +80,7 @@
     </div>
   </div>
 
-  <div class="panel-footer" *ngIf="isHidden">
+  <div class="panel-footer" [hidden] ="!isHidden">
     <button class="btn btn-primary" (click)="goToDetailsPage()"> View </button>  
     
     <button class="btn btn-primary" (click)="editEmployees()"> Edit </button>

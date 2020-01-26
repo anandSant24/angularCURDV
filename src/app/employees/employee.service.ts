@@ -24,9 +24,9 @@ export class EmployeeService{
     getEmployees(): Observable<Employee[]>{
       //Notice we made the service url 
       let invalidUrl = "http://localhost:3000/employees1";
-      let url = "http://localhost:3000/employees1";
+      let url = "http://localhost:3000/employees";
       
-      return this._httpClient.get<Employee[]>(invalidUrl)
+      return this._httpClient.get<Employee[]>(url)
         .pipe(catchError(this.handleError));
       //return Observable.of(this.listEmployees).delay(2000);
     }

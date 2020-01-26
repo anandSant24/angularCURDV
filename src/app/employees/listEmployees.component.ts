@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Employee } from "../models/employee.models";
 import { EmployeeService } from './employee.service';
 import { ActivatedRoute,Router } from '@angular/router';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { ResolvedModelList } from '../models/resolved-employeeList.model';
 
 @Component({
   templateUrl: "listEmployees.component.html",
@@ -14,13 +14,19 @@ export class ListEmployeesComponent implements OnInit {
   private _searchByName: string="";
 
   employees: Employee[];
-  filteredEmployees: Employee[];
 
+  filteredEmployees: Employee[];
+  error: string;
   onMouseMove(){
   }
 
   constructor(private _router:Router, private empSvc: EmployeeService, private  _activatedRoute: ActivatedRoute){
-    this.employees = this._activatedRoute.snapshot.data['employeeList'];
+    const resolvedEmployeeList: ResolvedModelList = this._activatedRoute.snapshot.data['employeeList'];
+    if(resolvedEmployeeList.error === null){
+      this.employees = resolvedEmployeeList.employeeList;
+    }else{
+      this.error = resolvedEmployeeList.error;
+    }
   }
 
   changeEmployeeName(){

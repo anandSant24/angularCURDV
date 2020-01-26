@@ -21,6 +21,8 @@ let appRoutes: Routes = [
   { path: "list", 
     component: ListEmployeesComponent,
     resolve: {employeeList: EmployeeListResolverSvc}
+    //note employeeList should match in ListEmployeesComponent i.e 
+    //    this.employees = this._activatedRoute.snapshot.data['employeeList'];
   },
   
   { 

@@ -1,4 +1,9 @@
 # AngularCurdV
+#67.a) Handling Resolver errors by creating and using new type ResolvedModelList
+update the employee.service  to see the changes working by providng valid and invalid url
+      let invalidUrl = "http://localhost:3000/employees1";
+      let url = "http://localhost:3000/employees1";
+    b).to Do
 
 #66 Error Handling in Angular
     When an Angular component needs data, there are usually 3 players

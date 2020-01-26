@@ -3,7 +3,7 @@
 update the employee.service  to see the changes working by providng valid and invalid url
       let invalidUrl = "http://localhost:3000/employees1";
       let url = "http://localhost:3000/employees1";
-    b).to Do
+    b).Second way of handling Resolver errors 
 
 #66 Error Handling in Angular
     When an Angular component needs data, there are usually 3 players

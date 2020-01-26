@@ -1,5 +1,34 @@
 # AngularCurdV
+#64 Client Server Architecture
+    
+HTTP Verb	Purpose
+GET	        To get data from the server
+POST	    To post data i.e to create new item on the server
+DELETE	    To delete data
+PUT, PATCH	To update data
+PUT is idempotent where as POST is not. So what does, Idempotent mean?
+Well, since PUT is idempotent, no matter how many times you call it, you would have the same effect. For example, when you use PUT with a specific ID and if a resource with that ID does not exist, PUT creates it. Now if you issue the same PUT request again with the same ID, another item with the same ID will not be created. Instead, that existing item will be updated. So it would not matter how many times you call PUT, it would have the same effect.
 
+Remember we use POST to create a new item. So, when you call POST multiple times, multiple items will be created.
+
+PUT	
+    Replace an existing Resource entirely i.e update all the properties of a resource	
+    Updates the item with the given ID if the item already exists or creates a new item with a given ID if the item does not exit.
+PATCH
+    Partial update i.e update only a sub-set of the properties of a resource
+    An item can only be patched if it exists. We cannot patch an item if it does not exist
+
+Summanry
+    When a browser issues a request
+    The request is mapped to route in the Angular application
+    The component that is associated with the route calls the Angular Service
+    The Angular service calls the server side service using HTTP
+    The server side service talks to the database
+    The database provides the data to the server side service
+    The server side service then provides that data to the Angular service on the client side
+    The Angular Service provides the data to the component
+    The component displays the data to the user in the browser
+    
 #63 Online fake REST API
     Representational State transfer:
         Architectural pattern

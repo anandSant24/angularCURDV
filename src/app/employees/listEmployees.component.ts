@@ -21,11 +21,11 @@ export class ListEmployeesComponent implements OnInit {
   }
 
   constructor(private _router:Router, private empSvc: EmployeeService, private  _activatedRoute: ActivatedRoute){
-    const resolvedEmployeeList: ResolvedModelList = this._activatedRoute.snapshot.data['employeeList'];
-    if(resolvedEmployeeList.error === null){
-      this.employees = resolvedEmployeeList.employeeList;
+    const resolvedData: Employee[] | string = this._activatedRoute.snapshot.data['employeeList'];
+    if(Array.isArray(resolvedData)){
+      this.employees = resolvedData;
     }else{
-      this.error = resolvedEmployeeList.error;
+      this.error = resolvedData;
     }
   }
 

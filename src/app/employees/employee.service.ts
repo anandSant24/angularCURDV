@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Employee } from '../models/employee.models';
+import { HttpClient } from '@angular/common/http';
 //Note: observable of
 import 'rxjs/add/observable/of';
 //Note: it is operator has delay
@@ -8,12 +9,17 @@ import 'rxjs/add/operator/delay';
 import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class EmployeeService{
+
+    constructor(private _httpClient: HttpClient){
+
+    }
     // getEmployees(){
     //     return this.listEmployees;
     // }
     /* Converting an array returned to an Observable */
     getEmployees(): Observable<Employee[]>{
-      return Observable.of(this.listEmployees).delay(2000);
+      return this._httpClient.get<Employee[]>("http://localhost:3000/employees");
+      //return Observable.of(this.listEmployees).delay(2000);
     }
     
     save(employee: Employee){

@@ -1,4 +1,14 @@
 # AngularCurdV
+
+#65 HTTP client
+    JSON server github page
+
+    to install JSON Server
+    # npm install -g json-server
+
+    To Start server
+    # json-server --watch db.json
+    
 #64 Client Server Architecture
     
 HTTP Verb	Purpose

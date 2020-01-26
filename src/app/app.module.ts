@@ -15,6 +15,7 @@ import { EmployeeListResolverSvc } from './employees/employee-list-resolver.serv
 import { PageNotFoundComponent } from './page-not-found.component';
 import { EmployeeDetailSGuardSvc } from './employees/employee-details-guard.service';
 import { AccordianComponent } from './shared/accordian.component';
+import { HttpClientModule } from '@angular/common/http';
 
 let appRoutes: Routes = [
   { path: "list", 
@@ -46,7 +47,8 @@ let appRoutes: Routes = [
     BrowserModule,
     BsDatepickerModule.forRoot(),
     RouterModule.forRoot(appRoutes,{ enableTracing: false }),
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [EmployeeService, createEmployeeCanDeActivateService, EmployeeListResolverSvc,EmployeeDetailSGuardSvc],
   bootstrap: [AppComponent]

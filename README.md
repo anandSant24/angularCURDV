@@ -1,5 +1,28 @@
 # AngularCurdV
 
+#66 Error Handling in Angular
+    When an Angular component needs data, there are usually 3 players
+        The Component itself
+        The Angular Service and
+        The Server Side Service
+
+        should we handle the service related errors in the service itself or in the component that consumes the service. According to Angular style guide, error inspection, interpretation, and resolution is something you want to do in the service, not in the component.
+
+    There are two types of errors that can occur. 
+        The server may reject the request, returning an HTTP response with a status code such as 404 or 500. These are error responses.
+        Something could go wrong on the client-side such as a network error that prevents the request from completing successfully or an exception thrown in an RxJS operator. These errors produce JavaScript ErrorEvent objects.
+        The HttpClient captures both kinds of errors in its HttpErrorResponse and you can inspect that response to figure out what really happened.
+
+        here are 2 types of operators in rxjs - Pipeable Operators and Patch Operators
+        Pipeable Operators are imported from rxjs/operators/
+        Patch Operators are imported from rxjs/add/operator/
+        Pipeable Operators have several benefits over Patch Operators. So if you have rxjs version 5.5 or later use pipeable operators.
+        Use the following link to read the benefits of pipeable operators
+        https://github.com/ReactiveX/rxjs/blob/master/doc/pipeable-operators.md
+
+        In our case, the angular service getEmployees() method is consumed by a Resolver service,if the resolver fails, the target route i.e LIST route will not be activated. 
+        If a component is directly consuming the angular service getEmployees() method, then it is easy to catch the error observable and display the error message to the user. 
+
 #65 HTTP client
     JSON server github page
 
@@ -8,7 +31,7 @@
 
     To Start server
     # json-server --watch db.json
-    
+
 #64 Client Server Architecture
     
 HTTP Verb	Purpose

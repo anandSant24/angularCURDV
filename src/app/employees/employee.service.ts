@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Employee } from '../models/employee.models';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 //Note: observable of
 import 'rxjs/add/observable/of';
 //Note: it is operator has delay
-import 'rxjs/add/operator/delay';
 
+import 'rxjs/add/operator/delay';
+import { catchError } from 'rxjs/operators';
+
+import { ErrorObservable } from "rxjs/observable/ErrorObservable";
 import { Observable } from 'rxjs/Observable';
+
 @Injectable()
 export class EmployeeService{
 
@@ -18,10 +22,24 @@ export class EmployeeService{
     // }
     /* Converting an array returned to an Observable */
     getEmployees(): Observable<Employee[]>{
-      return this._httpClient.get<Employee[]>("http://localhost:3000/employees");
+      //Notice we made the service url 
+      let invalidUrl = "http://localhost:3000/employees1";
+      let url = "http://localhost:3000/employees1";
+      
+      return this._httpClient.get<Employee[]>(invalidUrl)
+        .pipe(catchError(this.handleError));
       //return Observable.of(this.listEmployees).delay(2000);
     }
     
+    handleError(errorResponse: HttpErrorResponse){
+      if(errorResponse instanceof ErrorEvent){
+        console.log("Client side error occured");
+      }else{
+        console.log("server side error occured");
+      }
+      return new ErrorObservable("service failure error occured");
+    }
+
     save(employee: Employee){
       if(employee.id === null){
         // to add a unique value

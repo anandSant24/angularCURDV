@@ -7,8 +7,8 @@ import 'rxjs/add/observable/of';
 
 import 'rxjs/add/operator/delay';
 import { catchError } from 'rxjs/operators';
-
-import { ErrorObservable } from "rxjs/observable/ErrorObservable";
+import { throwError } from 'rxjs';
+// import { throwError } from "rxjs/observable/ErrorObservable";
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
@@ -32,12 +32,12 @@ export class EmployeeService{
     }
     
     handleError(errorResponse: HttpErrorResponse){
-      if(errorResponse instanceof ErrorEvent){
+      if(errorResponse.error instanceof ErrorEvent){
         console.log("Client side error occured");
       }else{
         console.log("server side error occured");
       }
-      return new ErrorObservable("service failure error occured");
+      return throwError("service failure error occured");
     }
 
     save(employee: Employee){

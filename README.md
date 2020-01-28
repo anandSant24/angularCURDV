@@ -28,6 +28,12 @@ update the employee.service  to see the changes working by providng valid and in
         In our case, the angular service getEmployees() method is consumed by a Resolver service,if the resolver fails, the target route i.e LIST route will not be activated. 
         If a component is directly consuming the angular service getEmployees() method, then it is easy to catch the error observable and display the error message to the user. 
 
+        ISSUE: ERROR in src/app/employees/employee.service.ts(29,7): error TS2322: Type 'Observable<{} | Employee[]>' is not assignable to type 'Observable<Employee[]>'.
+        Type '{} | Employee[]' is not assignable to type 'Employee[]'.
+            Type '{}' is missing the following properties from type 'Employee[]': length, pop, push, concat, and 26 more.
+        src/app/employees/employee.service.ts(40,14): error TS2304: Cannot find name 'throwError'.
+        resolved by using throwError('msg here');
+
 #65 HTTP client
     JSON server github page
 

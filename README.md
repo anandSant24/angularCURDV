@@ -1,4 +1,11 @@
 # AngularCurdV
+
+#68 POSt Method need 3 things at minimum
+    1. URI
+    2. Data
+    3. headers (content-type: application/json)
+    AND RETURN TYPE OF POST IS OBSERVABLE
+    
 #67.a) Handling Resolver errors by creating and using new type ResolvedModelList
 update the employee.service  to see the changes working by providng valid and invalid url
       let invalidUrl = "http://localhost:3000/employees1";

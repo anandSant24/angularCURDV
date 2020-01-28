@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Employee } from '../models/employee.models';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 //Note: observable of
 import 'rxjs/add/observable/of';
 //Note: it is operator has delay
@@ -14,6 +14,9 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class EmployeeService{
 
+    invalidUrl = "http://localhost:3000/employees1";
+    url = "http://localhost:3000/employees";
+  
     constructor(private _httpClient: HttpClient){
 
     }
@@ -23,10 +26,7 @@ export class EmployeeService{
     /* Converting an array returned to an Observable */
     getEmployees(): Observable<Employee[]>{
       //Notice we made the service url 
-      let invalidUrl = "http://localhost:3000/employees1";
-      let url = "http://localhost:3000/employees";
-      
-      return this._httpClient.get<Employee[]>(url)
+      return this._httpClient.get<Employee[]>(this.url)
         .pipe(catchError(this.handleError));
       //return Observable.of(this.listEmployees).delay(2000);
     }
@@ -40,14 +40,18 @@ export class EmployeeService{
       return throwError("service failure error occured");
     }
 
-    save(employee: Employee){
+    save(employee: Employee): Observable<Employee>{
       if(employee.id === null){
         // to add a unique value
         const maxId = this.listEmployees.reduce( function(e1, e2){
           return (e1.id > e2.id) ? e1: e2;
         }).id;
         employee.id = maxId + 1;
-        this.listEmployees.push(employee);
+        return this._httpClient.post<Employee>(this.url, employee, {
+          headers: new HttpHeaders({
+            contentType: 'application/json'
+          })
+        })
       }else{
         // if id in listEmployees is matched to input employee id it means we found the id in listEmployees 
         const foundIndex = this.listEmployees.findIndex(e => e.id === employee.id)

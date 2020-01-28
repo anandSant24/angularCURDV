@@ -100,9 +100,14 @@ export class CreateEmployeeComponent implements OnInit {
     // 2. using @ViewChild() property see above with name createEmployeeForm
 
     var newEmployeeData = Object.assign({}, this.employee);//creating new Object
-    this._empSvc.save(newEmployeeData);
-    this.createEmployeeForm.reset();
-    // this._empSvc.addNewEmployee(newEmployeeData);// passing newly created copy of object
-    this._routerNav.navigate(['/list']);
+    this._empSvc.save(newEmployeeData).subscribe(
+      (empData:Employee) => {
+        console.log(empData)        
+      this.createEmployeeForm.reset();
+      // this._empSvc.addNewEmployee(newEmployeeData);// passing newly created copy of object
+      this._routerNav.navigate(['/list']);
+      },
+      (error: any) => console.log("Error Occured: Cannot save Employee")
+    )
   }
 }

@@ -11,11 +11,7 @@ export class EmployeeListResolverSvc implements Resolve<Employee[] | string>{
     constructor(private _empSvc: EmployeeService){}
     resolve(route: ActivatedRouteSnapshot , state:RouterStateSnapshot): Observable<Employee[] | string>{
         return this._empSvc.getEmployees()
-            .pipe(
-                catchError((err:string) => 
-                    Observable.of(err)
-                )
-            )
+            .pipe(catchError((err:any) => Observable.of(null, err)));
     }
 }
  

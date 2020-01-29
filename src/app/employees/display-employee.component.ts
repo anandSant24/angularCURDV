@@ -37,7 +37,10 @@ export class DisplayEmployeeComponent implements OnInit {
   }
 
   deleteEmployees(){
-    this._empSvc.deleteEmployee(+this.employee.id);
+    this._empSvc.deleteEmployee(+this.employee.id).subscribe(
+      () => console.log('Sucessfully Deleted Employee with Id: ', this.employee.id),
+      (error:any) => console.log('Error Occured while deleting ',this.employee.id)
+    );
     this.notifyDelete.emit(+this.employee.id);
   }
   getNameAndGender():string{

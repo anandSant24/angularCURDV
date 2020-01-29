@@ -19,7 +19,15 @@ export class EmployeeDetailsComponent implements OnInit {
     this._activatedRoute.paramMap.subscribe(param =>{
       //Note + operator converts string to a number
       this.id = +param.get("id");
-      this.employee = this._empSvc.getEmployeesById(this.id);
+      
+      this._empSvc.getEmployeesById(this.id).subscribe(
+        (empData) => {
+          this.employee = empData;
+        },
+        (error: any) => {
+          console.log('error');
+        }
+      );
     }) 
   }
   ViewNextEmployee(){

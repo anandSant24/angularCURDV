@@ -2,7 +2,7 @@
   "employees": [
     {
       "id": 1,
-      "name": "Mark",
+      "name": "Mark2",
       "gender": "Male",
       "email": "mark@yahoogmail.com",
       "phoneNumber": 4325678904,
@@ -19,7 +19,7 @@
       "email": "mary@yahoogmail.com",
       "contactPreference": "Email",
       "dateOfBirth": "11/20/1979",
-      "department": "2",
+      "department": "3",
       "isActive": true,
       "photoPath": "../assets/images/mary.jpeg"
     },
@@ -34,18 +34,6 @@
       "department": "3",
       "isActive": false,
       "photoPath": "../assets/images/john.png"
-    },
-    {
-      "id": 4,
-      "name": "abc",
-      "gender": "Female",
-      "email": null,
-      "phoneNumber": "666",
-      "contactPreference": "phoneNumber",
-      "dateOfBirth": "2019-12-17T08:00:00.000Z",
-      "department": "2",
-      "isActive": true,
-      "photoPath": ""
     }
   ]
 }

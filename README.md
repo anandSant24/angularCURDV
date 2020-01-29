@@ -1,13 +1,21 @@
 # AngularCurdV
 
-#68 POSt Method need 3 things at minimum
+#70 DELETE HttpClient 
+    Deleting data on server
+    Notice delete takes only one URI as part of the parameter.
+
+#69 PUT Example
+    Remember : Pipe is for chaining Observable operators and subscribe is for activating the observable and listening for emitted values
+    details: https://stackoverflow.com/questions/51269372/difference-between-the-methods-pipe-and-subscribe-on-a-rxjs-observable
+
+#68 POST Method need 3 things at minimum
     1. URI
     2. Data
     3. headers (content-type: application/json)
     AND RETURN TYPE OF POST IS OBSERVABLE
-    
+
 #67.a) Handling Resolver errors by creating and using new type ResolvedModelList
-update the employee.service  to see the changes working by providng valid and invalid url
+    update the employee.service  to see the changes working by providng valid and invalid url
       let invalidUrl = "http://localhost:3000/employees1";
       let url = "http://localhost:3000/employees1";
     b).Second way of handling Resolver errors 
@@ -52,15 +60,15 @@ update the employee.service  to see the changes working by providng valid and in
 
 #64 Client Server Architecture
     
-HTTP Verb	Purpose
-GET	        To get data from the server
-POST	    To post data i.e to create new item on the server
-DELETE	    To delete data
-PUT, PATCH	To update data
-PUT is idempotent where as POST is not. So what does, Idempotent mean?
-Well, since PUT is idempotent, no matter how many times you call it, you would have the same effect. For example, when you use PUT with a specific ID and if a resource with that ID does not exist, PUT creates it. Now if you issue the same PUT request again with the same ID, another item with the same ID will not be created. Instead, that existing item will be updated. So it would not matter how many times you call PUT, it would have the same effect.
+    HTTP Verb	Purpose
+    GET	        To get data from the server
+    POST	    To post data i.e to create new item on the server
+    DELETE	    To delete data
+    PUT, PATCH	To update data
+    PUT is idempotent where as POST is not. So what does, Idempotent mean?
+    Well, since PUT is idempotent, no matter how many times you call it, you would have the same effect. For example, when you use PUT with a specific ID and if a resource with that ID does not exist, PUT creates it. Now if you issue the same PUT request again with the same ID, another item with the same ID will not be created. Instead, that existing item will be updated. So it would not matter how many times you call PUT, it would have the same effect.
 
-Remember we use POST to create a new item. So, when you call POST multiple times, multiple items will be created.
+    Remember we use POST to create a new item. So, when you call POST multiple times, multiple items will be created.
 
 PUT	
     Replace an existing Resource entirely i.e update all the properties of a resource	

@@ -5,7 +5,6 @@ import { BsDatepickerConfig } from "ngx-bootstrap/datepicker";
 import { Employee } from "../models/employee.models";
 import { EmployeeService } from "./employee.service";
 import { Router, ActivatedRoute } from '@angular/router';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   templateUrl: "create-employye.component.html",
@@ -88,8 +87,12 @@ export class CreateEmployeeComponent implements OnInit {
       // this._empSvc.getEmployeesById(employeeId) instead. is that notice
       // In the form if you update the name to say Mark1 and go to list wihtout saving notice the employee name got changed
       // since we are using the same employee object therefore to fix this we are creating a copy of employee object and assigning it to employee
-
-      this.employee = Object.assign({}, this._empSvc.getEmployeesById(employeeId));
+      return this._empSvc.getEmployeesById(employeeId).subscribe(
+        (employee) => {
+          this.employee = employee;
+        },
+        (error:any) => console.log('Error Occured getEmployeeData: ')
+      )
     }
   }
 
@@ -98,16 +101,26 @@ export class CreateEmployeeComponent implements OnInit {
     // of the function call and using it
     // Ex: newEmployee.reset();
     // 2. using @ViewChild() property see above with name createEmployeeForm
+    if(this.employee.id === null){
+      var newEmployeeData = Object.assign({}, this.employee);//creating new Object
+      this._empSvc.save(newEmployeeData).subscribe(
+        (empData:Employee) => {
+          console.log(empData)        
+        this.createEmployeeForm.reset();
+        // this._empSvc.addNewEmployee(newEmployeeData);// passing newly created copy of object
+        this._routerNav.navigate(['/list']);
+        },
+        (error: any) => console.log("Error Occured: Cannot save Employee")
+      )
+    }else{
+      this._empSvc.updateEmployee(this.employee).subscribe(
+        ()=>{
+          this.createEmployeeForm.reset();
+          this._routerNav.navigate(['/list']);
+        },
+        (error: any) =>  {console.log(error);}
+      )
+    }
 
-    var newEmployeeData = Object.assign({}, this.employee);//creating new Object
-    this._empSvc.save(newEmployeeData).subscribe(
-      (empData:Employee) => {
-        console.log(empData)        
-      this.createEmployeeForm.reset();
-      // this._empSvc.addNewEmployee(newEmployeeData);// passing newly created copy of object
-      this._routerNav.navigate(['/list']);
-      },
-      (error: any) => console.log("Error Occured: Cannot save Employee")
-    )
   }
 }

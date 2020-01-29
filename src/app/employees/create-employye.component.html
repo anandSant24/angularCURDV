@@ -5,7 +5,7 @@
   <!-- Consider the following line of code
     <form #employeeForm="ngForm" (ngSubmit)="saveEmployee(employeeForm)"> -->
 
-  <div class="panel panel-primary">
+  <div class="panel panel-primary" *ngIf="employee">
     <div class="panel-heading">
       <h3 class="panel-title">{{ panelTitle }} Employee</h3>
       <h4>Make the image work after 7PM , Dec 5</h4>

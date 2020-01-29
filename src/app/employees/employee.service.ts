@@ -16,7 +16,7 @@ export class EmployeeService{
 
     invalidUrl = "http://localhost:3000/employees1";
     url = "http://localhost:3000/employees";
-  
+
     constructor(private _httpClient: HttpClient){
 
     }
@@ -43,15 +43,15 @@ export class EmployeeService{
     save(employee: Employee): Observable<Employee>{
       if(employee.id === null){
         // to add a unique value
-        const maxId = this.listEmployees.reduce( function(e1, e2){
-          return (e1.id > e2.id) ? e1: e2;
-        }).id;
-        employee.id = maxId + 1;
-        return this._httpClient.post<Employee>(this.url, employee, {
+        // const maxId = this.listEmployees.reduce( function(e1, e2){
+        //   return (e1.id > e2.id) ? e1: e2;
+        // }).id;
+        // employee.id = maxId + 1;
+        return this._httpClient.post<Employee>(`${this.url}`, employee, {
           headers: new HttpHeaders({
             contentType: 'application/json'
           })
-        })
+        }).pipe(catchError(this.handleError));
       }else{
         // if id in listEmployees is matched to input employee id it means we found the id in listEmployees 
         const foundIndex = this.listEmployees.findIndex(e => e.id === employee.id)
@@ -59,20 +59,33 @@ export class EmployeeService{
         
       }
     }
-
-    deleteEmployee(id:number){
-      let empId = this.listEmployees.findIndex( emp => emp.id === id);
-      if(empId !== -1){
-        this.listEmployees.splice(empId, 1);
-      }
+    
+    updateEmployee(employee:Employee): Observable<void>{
+      return this._httpClient.put<void>(`${this.url}/${employee.id}`, employee, { 
+        headers: new HttpHeaders({
+              'contentType': 'application/json'
+          })
+        }).pipe(catchError(this.handleError));
     }
 
-    addNewEmployee(employee: any){
-        this.listEmployees.push(employee);
+    deleteEmployee(id:number): Observable<void>{
+      return this._httpClient.delete<void>(`${this.url}/${id}`)
+      .pipe(catchError(this.handleError));
     }
 
-    getEmployeesById(id:number){
-     return this.listEmployees[id-1];
+    addEmployee(employee: any): Observable<Employee>{
+        return this._httpClient.post<Employee>(`${this.url}`, employee, 
+        {
+          headers: new HttpHeaders({
+            'ContentType': 'application/json'
+          })
+        }
+        ).pipe(catchError(this.handleError));
+    }
+
+    getEmployeesById(id:number):Observable<Employee>{
+      return this._httpClient.get<Employee>(`${this.url}/${id}`)
+      .pipe(catchError(this.handleError));
     }
 
     private listEmployees: any[] = [
